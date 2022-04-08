@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name="players")
-public class Player {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,10 @@ public class Player {
     private String tag;
     @Column(name="level")
     private int level;
+    @Column(name="gold")
+    private int gold;
+    @Column(name="banned")
+    private Boolean banned;
     @Column(name="admin")
     private Boolean admin;
     @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
@@ -32,14 +36,16 @@ public class Player {
     @JsonBackReference
     private List<Post> posts;
 
-    public Player(){
+    public User(){
 
     }
 
-    public Player(String username, String tag, int level, Boolean admin) {
+    public User(String username, String tag, Boolean admin) {
         this.username = username;
         this.tag = tag;
-        this.level = level;
+        this.level = 0;
+        this.gold = 0;
+        this.banned = false;
         this.admin = admin;
         this.threads = new ArrayList<>();
         this.posts = new ArrayList<>();
@@ -77,6 +83,22 @@ public class Player {
         this.level = level;
     }
 
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public Boolean getBanned() {
+        return banned;
+    }
+
+    public void setBanned(Boolean banned) {
+        this.banned = banned;
+    }
+
     public Boolean getAdmin() {
         return admin;
     }
@@ -93,6 +115,10 @@ public class Player {
         this.threads = threads;
     }
 
+    public int getThreadCount(){
+        return this.threads.size();
+    }
+
     public List<Post> getPosts() {
         return posts;
     }
@@ -100,4 +126,9 @@ public class Player {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+
+    public int getPostCount(){
+        return this.posts.size();
+    }
+
 }

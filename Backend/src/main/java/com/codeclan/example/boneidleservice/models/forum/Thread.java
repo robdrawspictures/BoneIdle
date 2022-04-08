@@ -1,6 +1,6 @@
 package com.codeclan.example.boneidleservice.models.forum;
 
-import com.codeclan.example.boneidleservice.models.Player;
+import com.codeclan.example.boneidleservice.models.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -19,7 +19,7 @@ public class Thread {
     private String title;
     @ManyToOne
     @JoinColumn(name="creator")
-    private Player creator;
+    private User creator;
     @OneToMany(mappedBy = "thread", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Post> posts;
@@ -30,7 +30,7 @@ public class Thread {
 
     }
 
-    public Thread(String title, Player creator) {
+    public Thread(String title, User creator) {
         this.title = title;
         this.creator = creator;
         this.posts = new ArrayList<>();
@@ -53,11 +53,11 @@ public class Thread {
         this.title = title;
     }
 
-    public Player getCreator() {
+    public User getCreator() {
         return creator;
     }
 
-    public void setCreator(Player creator) {
+    public void setCreator(User creator) {
         this.creator = creator;
     }
 
@@ -69,6 +69,10 @@ public class Thread {
         this.posts = posts;
     }
 
+    public int getPostCount(){
+        return this.posts.size();
+    }
+
     public Boolean getLocked() {
         return locked;
     }
@@ -76,4 +80,6 @@ public class Thread {
     public void setLocked(Boolean locked) {
         this.locked = locked;
     }
+
+
 }

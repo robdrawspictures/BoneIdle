@@ -1,7 +1,6 @@
 package com.codeclan.example.boneidleservice.models.forum;
 
-import com.codeclan.example.boneidleservice.models.Player;
-import com.codeclan.example.boneidleservice.models.forum.Thread;
+import com.codeclan.example.boneidleservice.models.User;
 
 import javax.persistence.*;
 
@@ -16,7 +15,7 @@ public class Post {
     private Long id;
     @ManyToOne
     @JoinColumn(name="player", nullable = false)
-    private Player user;
+    private User user;
     @Column(name="body")
     private String body;
     @ManyToOne
@@ -27,7 +26,7 @@ public class Post {
 
     }
 
-    public Post(Player user, String body, Thread thread) {
+    public Post(User user, String body, Thread thread) {
         this.user = user;
         this.body = body;
         this.thread = thread;
@@ -41,11 +40,11 @@ public class Post {
         this.id = id;
     }
 
-    public Player getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Player user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

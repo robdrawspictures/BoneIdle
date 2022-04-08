@@ -14,16 +14,19 @@ public class Enemy {
     @Column(name="type")
     private EnemyType type;
     @Column(name="hp")
-    private int HP;
+    private int hp;
+    @Column(name="bio")
+    private String bio;
 
     public Enemy(){
 
     }
 
-    public Enemy(String name, EnemyType type, int HP) {
+    public Enemy(String name, EnemyType type, int hp, String bio) {
         this.name = name;
         this.type = type;
-        this.HP = HP;
+        this.hp = hp;
+        this.bio = bio;
     }
 
     public Long getId() {
@@ -50,11 +53,19 @@ public class Enemy {
         this.type = type;
     }
 
-    public int getHP() {
-        return HP;
+    public int getHp() {
+        return hp;
     }
 
-    public void setHP(int HP) {
-        this.HP = HP;
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

@@ -45,12 +45,9 @@ public class EnemyController {
 //    }
 
     @PatchMapping("/enemies/{id}")
-    public ResponseEntity<Enemy> updateEnemyBio(
-            @PathVariable(value = "id") Long enemyID, @RequestBody Enemy enemyDetails) {
-        Enemy enemy = enemyRepository.findById(enemyID).get();
-
-        enemy.setBio(enemyDetails.getBio());
-        return ResponseEntity.ok(enemy);
+    public ResponseEntity<Enemy> updateEnemyBio(@RequestBody Enemy enemy) {
+        enemyRepository.save(enemy);
+        return new ResponseEntity<>(enemy, HttpStatus.OK);
     }
 
 //    @PatchMapping("/enemies/{id}")

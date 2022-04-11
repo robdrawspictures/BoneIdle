@@ -15,6 +15,8 @@ public class Enemy {
     private EnemyType type;
     @Column(name="hp")
     private int hp;
+    @Column(name="maxHP")
+    private int maxHP;
     @Column(name="bio")
     private String bio;
 
@@ -26,6 +28,7 @@ public class Enemy {
         this.name = name;
         this.type = type;
         this.hp = hp;
+        this.maxHP = hp;
         this.bio = bio;
     }
 
@@ -59,6 +62,14 @@ public class Enemy {
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
     }
 
     public String getBio() {

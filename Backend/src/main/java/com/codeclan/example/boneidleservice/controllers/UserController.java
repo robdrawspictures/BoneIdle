@@ -29,4 +29,10 @@ public class UserController {
         userRepository.save(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
+    @DeleteMapping(value="/users/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id){
+        userRepository.deleteById(id);
+        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+    }
 }

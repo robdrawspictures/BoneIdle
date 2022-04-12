@@ -34,15 +34,11 @@ public class User {
     @Column(name="admin")
     private Boolean admin;
     @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value="user-threads")
     private List<Thread> threads;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value="user-posts")
     private List<Post> posts;
-
-    public User(){
-
-    }
 
     public User(String username, String tag, Boolean admin) {
         this.username = username;
@@ -53,6 +49,13 @@ public class User {
         this.radiant = 0;
         this.banned = false;
         this.admin = admin;
+        this.threads = new ArrayList<>();
+        this.posts = new ArrayList<>();
+    }
+
+    public User(){
+        this.level = 1;
+        this.banned = false;
         this.threads = new ArrayList<>();
         this.posts = new ArrayList<>();
     }
@@ -69,7 +72,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String userName) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

@@ -25,6 +25,10 @@ public class User {
     private int level;
     @Column(name="gold")
     private int gold;
+    @Column(name="kills")
+    private int kills;
+    @Column(name="radiant")
+    private int radiant;
     @Column(name="banned")
     private Boolean banned;
     @Column(name="admin")
@@ -43,8 +47,10 @@ public class User {
     public User(String username, String tag, Boolean admin) {
         this.username = username;
         this.tag = tag;
-        this.level = 0;
+        this.level = 1;
         this.gold = 0;
+        this.kills = 0;
+        this.radiant = 0;
         this.banned = false;
         this.admin = admin;
         this.threads = new ArrayList<>();
@@ -89,6 +95,22 @@ public class User {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public void setKills(int kills) {
+        this.kills = kills;
+    }
+
+    public int getRadiant() {
+        return radiant;
+    }
+
+    public void setRadiant(int radiant) {
+        this.radiant = radiant;
     }
 
     public Boolean getBanned() {

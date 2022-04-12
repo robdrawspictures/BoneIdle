@@ -24,11 +24,11 @@ public class Enemy {
 
     }
 
-    public Enemy(String name, EnemyType type, int hp, String bio) {
+    public Enemy(String name, EnemyType type, int hp, int maxHP, String bio) {
         this.name = name;
         this.type = type;
         this.hp = hp;
-        this.maxHP = hp;
+        this.maxHP = maxHP;
         this.bio = bio;
     }
 
